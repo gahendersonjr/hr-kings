@@ -1,0 +1,1 @@
+-Some hits are missing hc_x and hc_y. These will be ommitted from training data, but will need to be approxomated for final analysis.
