@@ -1,1 +1,2 @@
 -Some hits are missing hc_x and hc_y. These will be ommitted from training data, but will need to be approxomated for final analysis.
+-normalized data by looking at all data used and finding the maximum, then using that value as denominator.
