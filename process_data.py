@@ -1,6 +1,7 @@
 import csv
 import numpy as np
 from enum import Enum
+from network2 import vectorized_result
 
 class Info(Enum):
     DATE = 1
@@ -14,7 +15,7 @@ class RawInputs(Enum):
     HIT_DISTANCE = 52
     LAUNCH_SPEED = 53
     LAUNCH_ANGLE = 54
-    ESTIMATED_BA = 69
+    # ESTIMATED_BA = 69 #TODO: it seems to get better results without estimated BA, experiment more with this
     ESTIMATED_WOBA = 70
     LAUNCH_SPEED_ANGLE = 75
 
@@ -63,10 +64,3 @@ def get_normalization_denominator(raw_data_enum_name):
     name_as_string = str(raw_data_enum_name)
     enum_name = name_as_string[name_as_string.find('.')+1:]
     return RawInputDenominators[enum_name].value
-
-def vectorized_result(result):
-    results = np.zeros((2, 1))
-    results[result] = 1.0
-    return results
-
-test = process_data("data/stadiums/coors_field_2016-2019.csv")

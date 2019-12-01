@@ -1,2 +1,3 @@
 -Some hits are missing hc_x and hc_y. These will be ommitted from training data, but will need to be approxomated for final analysis.
 -normalized data by looking at all data used and finding the maximum, then using that value as denominator.
+-all stadium net training was done with years 2015-2019 (the years statcast has been available) unless they moved stadium or changed outfield wall dimensions. In those cases, only years where those are constant were used.
