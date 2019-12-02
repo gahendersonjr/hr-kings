@@ -8,8 +8,8 @@ import time
 from process_data import process_data
 from network2 import Network, vectorized_result
 
-ANN_DIMENSIONS = [7,5,3,2]
-NUM_EPOCHS = 50
+ANN_DIMENSIONS = [10,8,6,4,2]
+NUM_EPOCHS = 100
 MINI_BATCH_SIZE = 1
 ETA = 0.1
 
@@ -30,5 +30,4 @@ def save(ann, file_path):
     file.close()
 
 if __name__== "__main__":
-    train_ann("data/stadiums/oakland_coliseum_2015-2019.csv", "nets/coliseum.pck")
-    # train_ann("data/stadiums/coors_field_2016-2019.csv", "nets/coors.pck")
+    train_ann("data/stadiums/oakland_coliseum.csv", "nets/coliseum.pck") #TODO: make this accept one parameter and name the pickle file after the csv file

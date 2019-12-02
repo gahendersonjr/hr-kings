@@ -5,10 +5,8 @@ import csv
 class RawInputs(Enum):
     HC_X = 37
     HC_Y = 38
-    HIT_DISTANCE = 52
     LAUNCH_SPEED = 53
     LAUNCH_ANGLE = 54
-    ESTIMATED_BA = 69
     ESTIMATED_WOBA = 70
     LAUNCH_SPEED_ANGLE = 75
 
