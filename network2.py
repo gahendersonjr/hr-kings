@@ -120,9 +120,9 @@ class Network(object):
     def SGD(self, training_data, epochs, mini_batch_size, eta,
             lmbda = 0.0,
             evaluation_data=None,
-            monitor_evaluation_cost=True,
+            monitor_evaluation_cost=False,
             monitor_evaluation_accuracy=True,
-            monitor_training_cost=True,
+            monitor_training_cost=False,
             monitor_training_accuracy=True):
         """Train the neural network using mini-batch stochastic gradient
         descent.  The ``training_data`` is a list of tuples ``(x, y)``
@@ -155,75 +155,26 @@ class Network(object):
             for mini_batch in mini_batches:
                 self.update_mini_batch(
                     mini_batch, eta, lmbda, len(training_data))
-            print "Epoch %s training complete" % j
-            if monitor_training_cost:
-                cost = self.total_cost(training_data, lmbda)
-                training_cost.append(cost)
-                print "Cost on training data: {}".format(cost)
-            if monitor_training_accuracy:
-                accuracy = self.accuracy(training_data, convert=True)
-                training_accuracy.append(accuracy)
-                print "Accuracy on training data: {} / {}".format(
-                    accuracy, n)
-            if monitor_evaluation_cost:
-                cost = self.total_cost(evaluation_data, lmbda, convert=True)
-                evaluation_cost.append(cost)
-                print "Cost on evaluation data: {}".format(cost)
-            if monitor_evaluation_accuracy:
-                accuracy = self.accuracy(evaluation_data)
-                evaluation_accuracy.append(accuracy)
-                print "Accuracy on evaluation data: {} / {}".format(
-                    self.accuracy(evaluation_data), n_data)
-            print
-        return evaluation_cost, evaluation_accuracy, \
-            training_cost, training_accuracy
-
-    ## vladimir kulyukin 14may2018: same as above but
-    ## the accuracy function is called with convert=True always
-    ## to accommodate the data.
-    def SGD2(self, training_data, epochs, mini_batch_size, eta,
-            lmbda = 0.0,
-            evaluation_data=None,
-            monitor_evaluation_cost=False,
-            monitor_evaluation_accuracy=False,
-            monitor_training_cost=False,
-            monitor_training_accuracy=False):
-        """
-
-        """
-        if evaluation_data: n_data = len(evaluation_data)
-        n = len(training_data)
-        evaluation_cost, evaluation_accuracy = [], []
-        training_cost, training_accuracy = [], []
-        for j in xrange(epochs):
-            random.shuffle(training_data)
-            mini_batches = [
-                training_data[k:k+mini_batch_size]
-                for k in xrange(0, n, mini_batch_size)]
-            for mini_batch in mini_batches:
-                self.update_mini_batch(
-                    mini_batch, eta, lmbda, len(training_data))
-            #print "Epoch %s training complete" % j
-            if monitor_training_cost:
-                cost = self.total_cost(training_data, lmbda)
-                training_cost.append(cost)
-                print "Cost on training data: {}".format(cost)
-            if monitor_training_accuracy:
-                accuracy = self.accuracy(training_data, convert=True)
-                training_accuracy.append(accuracy)
-                print "Accuracy on training data: {} / {}".format(
-                    accuracy, n)
-            if monitor_evaluation_cost:
-                cost = self.total_cost(evaluation_data, lmbda, convert=True)
-                evaluation_cost.append(cost)
-                print "Cost on evaluation data: {}".format(cost)
-            if monitor_evaluation_accuracy:
-                accuracy = self.accuracy(evaluation_data, convert=True)
-                evaluation_accuracy.append(accuracy)
-                # vladimir kulyukin: commented out
-                #print "Accuracy on evaluation data: {} / {}".format(
-                #    accuracy, n)
-            #print
+            if (j+1)%50==0:
+                print "Epoch %s training complete" % j
+                if monitor_training_cost:
+                    cost = self.total_cost(training_data, lmbda)
+                    training_cost.append(cost)
+                    print "Cost on training data: {}".format(cost)
+                if monitor_training_accuracy:
+                    accuracy = self.accuracy(training_data, convert=True)
+                    training_accuracy.append(accuracy)
+                    print "Accuracy on training data: {} / {} ({})".format(
+                        accuracy, n, float(accuracy)/float(n))
+                if monitor_evaluation_cost:
+                    cost = self.total_cost(evaluation_data, lmbda, convert=True)
+                    evaluation_cost.append(cost)
+                    print "Cost on evaluation data: {}".format(cost)
+                if monitor_evaluation_accuracy:
+                    accuracy = self.accuracy(evaluation_data)
+                    evaluation_accuracy.append(accuracy)
+                    print "Accuracy on evaluation data: {} / {} ({})".format(
+                        accuracy, n_data, float(accuracy)/float(n_data))
         return evaluation_cost, evaluation_accuracy, \
             training_cost, training_accuracy
 

@@ -3,22 +3,18 @@ import csv
 import random
 
 class RawInputs(Enum):
-    HC_X = 37
-    HC_Y = 38
     LAUNCH_SPEED = 53
     LAUNCH_ANGLE = 54
-    ESTIMATED_WOBA = 70
     LAUNCH_SPEED_ANGLE = 75
 
 class RawInputDenominators(Enum):
-    HC_X = 248.0
-    HC_Y = 207.46
     LAUNCH_SPEED = 121.7
     LAUNCH_ANGLE = 72.5
-    ESTIMATED_WOBA = 2.016
     LAUNCH_SPEED_ANGLE = 6.0
 
 class RawInputsInfo(Enum):
+    HC_X = 37
+    HC_Y = 38
     DATE = 1
     PLAYER_NAME = 5
     RESULT = 8

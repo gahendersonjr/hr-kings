@@ -3,6 +3,7 @@ import csv
 import os
 from parse_weather_data import make_weather_dict
 from clean_data_utils import RawInputs, RawInputDenominators, RawInputsInfo, write_to_file, get_normalization_denominator
+import math
 
 def cleanup_stadium_data_for_training():
     home_runs = []
@@ -18,10 +19,20 @@ def cleanup_stadium_data_for_training():
             next(reader)
             for row in reader:
               key = row[RawInputsInfo.DATE.value]+row[RawInputsInfo.HOME_TEAM.value]+row[RawInputsInfo.AWAY_TEAM.value]
-              # In rare occasions some hits do not have hit coordinate values or games don't have weather data so they are excluded from training data
-              if row[RawInputs.HC_Y.value] == "null" or row[RawInputs.HC_X.value] == "null" or key not in weather_dict.keys():
+              # no hit coordinate data, skipping
+              if row[RawInputsInfo.HC_Y.value] == "null" or row[RawInputsInfo.HC_X.value] == "null":
                   continue
-              clean_row = [float(row[i.value])/get_normalization_denominator(i) for i in RawInputs] + weather_dict[key]
+              # no weather data, skipping
+              if key not in weather_dict.keys():
+                  continue
+              # game in retractable stadium or dome, skipping
+              if row[RawInputsInfo.HOME_TEAM.value] in ["TB", "SEA", "TOR", "HOU", "MIL", "MIA", "ARI"]:
+                  continue
+              clean_row = [float(row[i.value])/get_normalization_denominator(i) for i in RawInputs]
+              # converting hit coordinate to horizantal angle. i borrowed this guys technique https://github.com/BillPetti/Statcast-Modeling/blob/master/statcast.battedball.woba.R
+              horizontal_angle = math.tan((float(row[RawInputsInfo.HC_X.value])-128.0)/(208.0-float(row[RawInputsInfo.HC_Y.value])))*180.0/math.pi*.75
+              clean_row.append(horizontal_angle/90.0)
+              clean_row += weather_dict[key]
               if row[RawInputsInfo.HOME_TEAM.value] not in hr_dict.keys():
                   hr_dict[row[RawInputsInfo.HOME_TEAM.value]] = []
                   other_dict[row[RawInputsInfo.HOME_TEAM.value]] = []
@@ -34,12 +45,9 @@ def cleanup_stadium_data_for_training():
     for key in hr_dict.keys():
         home_runs = hr_dict[key]
         other_hits = other_dict[key]
-        train_hr = home_runs[:int(len(home_runs)*.8)]
-        train_other = other_hits[:int(len(other_hits)*.8)]
-        train_hr = train_hr * int(len(train_other)/len(train_hr)) # oversampling hr data for training
-        train = train_hr + train_other
-        test = home_runs[int(len(home_runs)*.8):int(len(home_runs)*.9)] + other_hits[int(len(other_hits)*.8):int(len(other_hits)*.9)]
-        valid = home_runs[int(len(home_runs)*.9):] + other_hits[int(len(other_hits)*.9):]
+        train = home_runs[:int(len(home_runs)*.7)] + other_hits[:int(len(other_hits)*.7)]
+        test = home_runs[int(len(home_runs)*.7):int(len(home_runs)*.85)] + other_hits[int(len(other_hits)*.7):int(len(other_hits)*.85)]
+        valid = home_runs[int(len(home_runs)*.85):] + other_hits[int(len(other_hits)*.85):]
         write_to_file("clean_data/stadiums/train/" + key + ".csv", train)
         write_to_file("clean_data/stadiums/test/" + key + ".csv", test)
         write_to_file("clean_data/stadiums/valid/" + key + ".csv", valid)
