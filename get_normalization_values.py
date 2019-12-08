@@ -23,4 +23,5 @@ for filename in os.listdir("C:/Users/Alan/Desktop/finalproject/hr-kings/data/bat
             for i in RawInputs:
                 if row[i.value] != "null" and float(row[i.value]) > dict[i]:
                     dict[i] = float(row[i.value])
+
 print dict
