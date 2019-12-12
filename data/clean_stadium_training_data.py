@@ -1,8 +1,7 @@
 from __future__ import division
 import csv
 import os
-from parse_weather_data import make_weather_dict
-from clean_data_utils import RawInputs, RawInputDenominators, RawInputsInfo, write_to_file, get_normalization_denominator
+from clean_data_utils import RawInputs, RawInputDenominators, RawInputsInfo, write_to_file, get_normalization_denominator, make_weather_dict
 import math
 
 def cleanup_stadium_data_for_training():
@@ -10,11 +9,11 @@ def cleanup_stadium_data_for_training():
     other_hits = []
     hr_dict = {}
     other_dict = {}
+    weather_dict = make_weather_dict()
     path = "raw_data/batting_data/"
     # take all data points and put them in map based on home stadium
     for filename in os.listdir(path):
         with open(path + filename) as file:
-            weather_dict = make_weather_dict()
             reader = csv.reader(file, delimiter=",")
             next(reader)
             for row in reader:
