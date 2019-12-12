@@ -78,7 +78,6 @@ def make_weather_dict():
                 weather_dict[key] = [temp/113.0, humidity/100.0, wind_speed/40.0, wind_direction/180.0]
     return weather_dict
 
-
 def find_avg_horizontal_angle():
     averages = {}
     keys = ["right center field","left center field", "left field", "right field","center field"]
