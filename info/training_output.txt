@@ -1,0 +1,115 @@
+Training ANN for ATL...
+Epoch 999 training complete
+Accuracy on training data: 1706 / 1810 (0.942541436464)
+Accuracy on evaluation data: 358 / 388 (0.922680412371)
+ANN trained for ATL in 113.838000059 seconds
+Training ANN for BAL...
+Epoch 999 training complete
+Accuracy on training data: 1819 / 1928 (0.94346473029)
+Accuracy on evaluation data: 384 / 413 (0.929782082324)
+ANN trained for BAL in 121.052999973 seconds
+Training ANN for BOS...
+Epoch 999 training complete
+Accuracy on training data: 1740 / 1841 (0.945138511678)
+Accuracy on evaluation data: 368 / 395 (0.93164556962)
+ANN trained for BOS in 115.679000139 seconds
+Training ANN for CHC...
+Epoch 999 training complete
+Accuracy on training data: 1512 / 1651 (0.915808600848)
+Accuracy on evaluation data: 324 / 355 (0.912676056338)
+ANN trained for CHC in 103.792000055 seconds
+Training ANN for CIN...
+Epoch 999 training complete
+Accuracy on training data: 1631 / 1730 (0.942774566474)
+Accuracy on evaluation data: 349 / 371 (0.940700808625)
+ANN trained for CIN in 107.299000025 seconds
+Training ANN for CLE...
+Epoch 999 training complete
+Accuracy on training data: 1687 / 1821 (0.92641405821)
+Accuracy on evaluation data: 366 / 391 (0.936061381074)
+ANN trained for CLE in 114.592000008 seconds
+Training ANN for COL...
+Epoch 999 training complete
+Accuracy on training data: 1837 / 1952 (0.941086065574)
+Accuracy on evaluation data: 398 / 419 (0.949880668258)
+ANN trained for COL in 123.04399991 seconds
+Training ANN for CWS...
+Epoch 999 training complete
+Accuracy on training data: 1570 / 1670 (0.940119760479)
+Accuracy on evaluation data: 327 / 358 (0.913407821229)
+ANN trained for CWS in 107.106999874 seconds
+Training ANN for DET...
+Epoch 999 training complete
+Accuracy on training data: 1839 / 1964 (0.936354378819)
+Accuracy on evaluation data: 393 / 421 (0.933491686461)
+ANN trained for DET in 124.691999912 seconds
+Training ANN for KC...
+Epoch 999 training complete
+Accuracy on training data: 1821 / 1928 (0.944502074689)
+Accuracy on evaluation data: 383 / 413 (0.927360774818)
+ANN trained for KC in 120.287999868 seconds
+Training ANN for LAA...
+Epoch 999 training complete
+Accuracy on training data: 1735 / 1863 (0.931293612453)
+Accuracy on evaluation data: 374 / 399 (0.937343358396)
+ANN trained for LAA in 117.182999849 seconds
+Training ANN for LAD...
+Epoch 999 training complete
+Accuracy on training data: 1613 / 1716 (0.939976689977)
+Accuracy on evaluation data: 336 / 368 (0.913043478261)
+ANN trained for LAD in 108.296000004 seconds
+Training ANN for MIN...
+Epoch 999 training complete
+Accuracy on training data: 1828 / 1940 (0.942268041237)
+Accuracy on evaluation data: 385 / 416 (0.925480769231)
+ANN trained for MIN in 122.336999893 seconds
+Training ANN for NYM...
+Epoch 999 training complete
+Accuracy on training data: 1531 / 1649 (0.928441479685)
+Accuracy on evaluation data: 331 / 354 (0.935028248588)
+ANN trained for NYM in 103.312999964 seconds
+Training ANN for NYY...
+Epoch 999 training complete
+Accuracy on training data: 1631 / 1740 (0.937356321839)
+Accuracy on evaluation data: 347 / 373 (0.930294906166)
+ANN trained for NYY in 107.295000076 seconds
+Training ANN for OAK...
+Epoch 999 training complete
+Accuracy on training data: 1749 / 1874 (0.933297758805)
+Accuracy on evaluation data: 367 / 401 (0.915211970075)
+ANN trained for OAK in 117.787000179 seconds
+Training ANN for PHI...
+Epoch 999 training complete
+Accuracy on training data: 1536 / 1724 (0.890951276102)
+Accuracy on evaluation data: 320 / 370 (0.864864864865)
+ANN trained for PHI in 106.302999973 seconds
+Training ANN for PIT...
+Epoch 999 training complete
+Accuracy on training data: 1725 / 1831 (0.94210813763)
+Accuracy on evaluation data: 361 / 393 (0.918575063613)
+ANN trained for PIT in 114.092999935 seconds
+Training ANN for SD...
+Epoch 999 training complete
+Accuracy on training data: 1501 / 1596 (0.940476190476)
+Accuracy on evaluation data: 321 / 342 (0.938596491228)
+ANN trained for SD in 100.134000063 seconds
+Training ANN for SF...
+Epoch 999 training complete
+Accuracy on training data: 1695 / 1764 (0.960884353741)
+Accuracy on evaluation data: 353 / 378 (0.933862433862)
+ANN trained for SF in 110.174999952 seconds
+Training ANN for STL...
+Epoch 999 training complete
+Accuracy on training data: 1647 / 1759 (0.936327458783)
+Accuracy on evaluation data: 354 / 378 (0.936507936508)
+ANN trained for STL in 111.263000011 seconds
+Training ANN for TEX...
+Epoch 999 training complete
+Accuracy on training data: 1830 / 1948 (0.939425051335)
+Accuracy on evaluation data: 399 / 418 (0.954545454545)
+ANN trained for TEX in 121.616999865 seconds
+Training ANN for WSH...
+Epoch 999 training complete
+Accuracy on training data: 1745 / 1866 (0.935155412647)
+Accuracy on evaluation data: 363 / 400 (0.9075)
+ANN trained for WSH in 117.88499999 seconds

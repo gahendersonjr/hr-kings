@@ -22,7 +22,7 @@ wind_direction_dict = {
 
 def make_weather_dict():
     weather_dict = {}
-    path = "C:/Users/Alan/Desktop/finalproject/hr-kings/data/raw_data/box_scores/"
+    path = "raw_data/box_scores/"
     for filename in os.listdir(path):
         with open(path + filename) as file:
             daily_box_scores = json.load(file)

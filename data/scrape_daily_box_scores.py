@@ -11,12 +11,12 @@ dict = {}
 
 def get_all_daily_box_scores_json_files():
     #populate dict with already collected data to reduce calls since limited api calls are allowed with trial api key
-    for filename in os.listdir("C:/Users/Alan/Desktop/finalproject/hr-kings/data/box_scores/"):
+    for filename in os.listdir("raw_data/box_scores/"):
         dict[os.path.splitext(filename)[0]] = True
     print str(len(dict)) + " daily box scores previously collected."
-    #iterate through batting stats data and save all json for dates not already collected
-    for filename in os.listdir("C:/Users/Alan/Desktop/finalproject/hr-kings/data/batting_stats/"):
-        with open("data/batting_stats/" + filename) as file:
+    #iterate through batting data and save all json for dates not already collected
+    for filename in os.listdir("raw_data/batting_data/"):
+        with open("raw_data/batting_data/" + filename) as file:
             reader = csv.reader(file, delimiter=",")
             next(reader)
             for row in reader:
@@ -31,7 +31,7 @@ def get_daily_box_scores_json_file(date):
         url = "/mlb/trial/v6.6/en/games/" + date.replace("-", "/") + "/boxscore.json?api_key=" + API_KEY
         conn.request("GET", url)
         res = conn.getresponse()
-        with open('C:/Users/Alan/Desktop/finalproject/hr-kings/data/box_scores/' + date + '.json', 'w') as outfile:
+        with open('raw_data/box_scores/' + date + '.json', 'w') as outfile:
             outfile.write(res.read())
         dict[date] = True
         print str(len(dict)) + " daily box scores collected."

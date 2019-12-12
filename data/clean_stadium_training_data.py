@@ -10,7 +10,7 @@ def cleanup_stadium_data_for_training():
     other_hits = []
     hr_dict = {}
     other_dict = {}
-    path = "C:/Users/Alan/Desktop/finalproject/hr-kings/data/raw_data/batting_data/"
+    path = "raw_data/batting_data/"
     # take all data points and put them in map based on home stadium
     for filename in os.listdir(path):
         with open(path + filename) as file:
