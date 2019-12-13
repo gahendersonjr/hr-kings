@@ -6,6 +6,7 @@ import csv
 import numpy as np
 import json
 
+#This file takes the trained ANNs and runs real life data for all players and outputs the top five HR hitters for each season.
 def analyze_data_on_stadium(filename, year, average_weather_dict):
     average_weather = average_weather_dict[os.path.splitext(filename)[0]]
     ann = load_ann("nets/" + filename)
@@ -27,11 +28,8 @@ def display_leaders(hr_dict, year, stadium):
         hr_leaders.append([i, hr_dict[i]])
     hr_leaders = sorted(hr_leaders, key=lambda x: x[1], reverse=True)
     print year + " data on " + stadium
-    print hr_leaders[0]
-    print hr_leaders[1]
-    print hr_leaders[2]
-    print hr_leaders[3]
-    print hr_leaders[4]
+    for i in range(0, 5):
+        print hr_leaders[i][0] + " (" + str(hr_leaders[i][1]) + ")"
     print "-----------------------------"
 
 def process_data(file_path, average_weather):

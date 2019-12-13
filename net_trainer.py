@@ -8,6 +8,8 @@ import time
 import csv
 from network2 import Network, vectorized_result
 
+#this file trains all the stadium ANNs
+
 ANN_DIMENSIONS = [8,6,4,2]
 NUM_EPOCHS = 1000
 MINI_BATCH_SIZE = 1
@@ -20,12 +22,12 @@ def train_all_stadium_anns():
 def train_ann(team):
     train_data = process_data(team, "train", vectorize=True)
     test_data = process_data(team, "test")
-    print "Training ANN for " + team + "..."
+    print team + "..."
     ann = Network(ANN_DIMENSIONS)
     start = time.time()
     ann.SGD(train_data, NUM_EPOCHS, MINI_BATCH_SIZE, ETA, evaluation_data=test_data)
     end = time.time()
-    print "ANN trained for " + team + " in " + str(end-start) + " seconds"
+    print "--------------------------"
     save(ann, team)
 
 def save(ann, team):

@@ -156,7 +156,7 @@ class Network(object):
                 self.update_mini_batch(
                     mini_batch, eta, lmbda, len(training_data))
             if (j+1)%1000==0:
-                print "Epoch %s training complete" % j
+                # print "Epoch %s training complete" % j
                 if monitor_training_cost:
                     cost = self.total_cost(training_data, lmbda)
                     training_cost.append(cost)

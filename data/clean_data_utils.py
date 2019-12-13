@@ -5,6 +5,8 @@ import os
 import json
 import math
 
+#this file consists of helper tools i wrote to help me with data processing
+
 class RawInputs(Enum):
     LAUNCH_SPEED = 53
     LAUNCH_ANGLE = 54
@@ -36,6 +38,20 @@ def get_normalization_denominator(raw_data_enum_name):
     name_as_string = str(raw_data_enum_name)
     enum_name = name_as_string[name_as_string.find('.')+1:]
     return RawInputDenominators[enum_name].value
+
+def find_normalization_denominators():
+    dict = {}
+    for i in RawInputs:
+        dict[i] = 0.0
+    for filename in os.listdir("raw_data/batting_data"):
+        with open("raw_data/batting_data/" + filename) as file:
+            reader = csv.reader(file, delimiter=",")
+            next(reader)
+            for row in reader:
+                for i in RawInputs:
+                    if row[i.value] != "null" and float(row[i.value]) > dict[i]:
+                        dict[i] = float(row[i.value])
+    print dict
 
 wind_direction_dict = {
     "N": 0,
