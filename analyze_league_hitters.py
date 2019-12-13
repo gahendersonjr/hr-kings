@@ -6,9 +6,7 @@ import csv
 import numpy as np
 import json
 
-average_weather_dict = make_average_weather_dict()
-
-def analyze_data_on_stadium(filename, year):
+def analyze_data_on_stadium(filename, year, average_weather_dict):
     average_weather = average_weather_dict[os.path.splitext(filename)[0]]
     ann = load_ann("nets/" + filename)
     hr_dict = {}
@@ -104,6 +102,7 @@ def make_average_weather_dict():
             average_weather_dict[key][i] = average_weather_dict[key][i]/float(average_weather_dict[key][4])
     return average_weather_dict
 
+average_weather_dict = make_average_weather_dict()
 for year in ["2018", "2019"]:
     for filename in os.listdir("nets/"):
-        analyze_data_on_stadium(filename, year)
+        analyze_data_on_stadium(filename, year, average_weather_dict)
